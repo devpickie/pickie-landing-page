@@ -30,6 +30,24 @@
       This page requires JavaScript to display.
     </div>
   </noscript>
+  <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCFZ1-ajIiRBIkZA6p7hzzBpRib8Ydv7Zo",
+      authDomain: "pickie-landing-page.firebaseapp.com",
+      projectId: "pickie-landing-page",
+      storageBucket: "pickie-landing-page.firebasestorage.app",
+      messagingSenderId: "371770661646",
+      appId: "1:371770661646:web:ccf3cb1fb3390d6b4a555f",
+      measurementId: "G-SY6PEJNG9M"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </head>
 <body>
   <div id="__bundler_thumbnail">
