@@ -1,10 +1,4 @@
 {
   "cleanUrls": false,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/admin/:path*",
-      "destination": "https://admin-panel-vert-phi.vercel.app/admin/:path*"
-    }
-  ]
+  "trailingSlash": false
 }
