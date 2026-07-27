@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete Account | Pickie</title>
+<meta name="description" content="Learn how to permanently delete your Pickie account and understand what personal data will be removed after deletion.">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pickie">
+<meta property="og:title" content="Delete Account | Pickie">
+<meta property="og:description" content="Learn how to permanently delete your Pickie account and understand what personal data will be removed after deletion.">
+<meta property="og:url" content="https://pickie.app/delete-account.html">
+<meta property="og:image" content="https://pickie.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Delete Account | Pickie">
+<meta name="twitter:description" content="Learn how to permanently delete your Pickie account and understand what personal data will be removed after deletion.">
+<meta name="twitter:image" content="https://pickie.app/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Sora', sans-serif; background: #FFFFFF; color: #0A1A44; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #B7FF2A; color: #0A1A44; }
+  a { color: inherit; }
+
+  .pk-menu-btn { display: none; }
+  .pk-menu-panel { display: none; }
+  @media (min-width: 941px) { .pk-menu-panel { display: none !important; } }
+  @media (max-width: 940px) {
+    .pk-navlink { display: none !important; }
+    .pk-menu-btn { display: flex; }
+  }
+  .pk-menu-panel.is-open { display: flex; }
+
+  /* ---------- Delete-account page content ---------- */
+  .da-header { max-width: 1180px; margin: 0 auto; padding: 56px 28px 36px; text-align: center; }
+  .da-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #1E40FF; margin-bottom: 14px; }
+  .da-title { font-size: clamp(36px, 5vw, 56px); line-height: 1.0; letter-spacing: -0.035em; font-weight: 800; }
+  .da-subtitle { font-size: 16px; line-height: 1.6; color: rgba(10,26,68,0.6); margin-top: 16px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  .da-wrap { max-width: 760px; margin: 0 auto; padding: 12px 28px 90px; }
+  .da-card { background: #FFFFFF; border: 1px solid #E4E7F0; border-radius: 22px; padding: clamp(24px, 4vw, 40px); margin-bottom: 20px; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .da-card:hover { border-color: rgba(30,64,255,0.28); transform: translateY(-2px); }
+
+  .da-sec-title { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .da-sec-title h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .da-icon { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 11px; background: rgba(30,64,255,0.08); color: #1E40FF; flex-shrink: 0; }
+  .da-icon svg { width: 21px; height: 21px; }
+
+  .da-lead { font-size: 16px; line-height: 1.7; color: rgba(10,26,68,0.72); margin-bottom: 10px; }
+  .da-note { font-size: 14.5px; line-height: 1.7; color: rgba(10,26,68,0.5); margin-top: 12px; }
+
+  .da-steps { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .da-steps li { display: flex; align-items: flex-start; gap: 14px; font-size: 16px; line-height: 1.6; color: rgba(10,26,68,0.85); }
+  .da-steps__index { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #1E40FF; color: #FFFFFF; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+
+  .da-list { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 16px; line-height: 1.7; color: rgba(10,26,68,0.72); margin: 4px 0 4px; }
+  .da-list li { display: flex; align-items: baseline; gap: 10px; }
+  .da-list li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #1E40FF; flex-shrink: 0; transform: translateY(-2px); }
+
+  .da-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #FFFFFF; background: #1E40FF; padding: 12px 22px; border-radius: 999px; text-decoration: none; margin-top: 4px; transition: opacity 0.15s ease, transform 0.15s ease; }
+  .da-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .da-btn:focus-visible { outline: 2px solid #0A1A44; outline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #1E40FF; outline-offset: 3px; }
+
+  @media (max-width: 600px) {
+    .da-card { padding: 22px 20px; border-radius: 18px; }
+    .da-wrap { padding: 8px 16px 64px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .da-card, .da-btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div style="overflow-x: clip;">
+
+  <!-- ============ NAVBAR — copied 1:1 from privacy.html ============ -->
+  <nav style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(10,26,68,0.07);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.html" aria-label="Pickie home" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="pickie-logo-web.png" alt="Pickie" style="height: 34px; width: auto; display: block;">
+      </a>
+      <div style="display: flex; align-items: center; gap: 30px;">
+        <a class="pk-navlink" href="index.html#how" style="font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78;">How it works</a>
+        <a class="pk-navlink" href="index.html#matchnow" style="font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78;">Match Now</a>
+        <a class="pk-navlink" href="index.html#features" style="font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78;">Features</a>
+        <a class="pk-navlink" href="index.html#founder" style="font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78;">About</a>
+        <a href="index.html#get" style="font-size: 14px; font-weight: 700; color: #FFFFFF; background: #1E40FF; padding: 11px 20px; border-radius: 999px; text-decoration: none;">Get the app</a>
+        <button class="pk-menu-btn" id="pkMenuBtn" aria-label="Menu" aria-expanded="false" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: -8px;">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0A1A44" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
+      </div>
+    </div>
+    <div class="pk-menu-panel" id="pkMenuPanel" style="position: absolute; top: 100%; left: 0; right: 0; background: #FFFFFF; border-bottom: 1px solid #E4E7F0; box-shadow: 0 24px 34px -22px rgba(10,26,68,0.28); padding: 8px 24px 18px; flex-direction: column;">
+      <a href="index.html#how" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">How it works</a>
+      <a href="index.html#matchnow" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Match Now</a>
+      <a href="index.html#features" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Features</a>
+      <a href="index.html#founder" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none;">About</a>
+      <a href="index.html#get" style="margin-top: 10px; background: #1E40FF; color: #FFFFFF; text-align: center; padding: 13px; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none;">Get the app</a>
+    </div>
+  </nav>
+
+  <!-- ============ PAGE CONTENT — same concept/language as privacy.html ============ -->
+  <header class="da-header">
+    <div class="da-eyebrow">ACCOUNT</div>
+    <h1 class="da-title">Delete Your Pickie Account</h1>
+    <p class="da-subtitle">
+      At Pickie, we respect your privacy and give you full control over your account and
+      personal data. You can permanently delete your Pickie account at any time directly
+      from within the app.
+    </p>
+  </header>
+
+  <div class="da-wrap">
+
+    <!-- How to delete -->
+    <section class="da-card">
+      <div class="da-sec-title">
+        <span class="da-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h2>How to Delete Your Account</h2>
+      </div>
+
+      <ol class="da-steps">
+        <li><span class="da-steps__index">1</span><span>Open the Pickie app.</span></li>
+        <li><span class="da-steps__index">2</span><span>Go to Profile.</span></li>
+        <li><span class="da-steps__index">3</span><span>Tap Account.</span></li>
+        <li><span class="da-steps__index">4</span><span>Select Security.</span></li>
+        <li><span class="da-steps__index">5</span><span>Scroll to Danger Zone.</span></li>
+        <li><span class="da-steps__index">6</span><span>Tap Delete Account.</span></li>
+        <li><span class="da-steps__index">7</span><span>Confirm your deletion request.</span></li>
+      </ol>
+    </section>
+
+    <!-- What's deleted -->
+    <section class="da-card">
+      <div class="da-sec-title">
+        <span class="da-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 9.5C8 19.4 5 15.5 5 11V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h2>What Data Will Be Deleted?</h2>
+      </div>
+
+      <p class="da-lead">
+        When your account is deleted, we permanently remove the personal data associated
+        with your account, including:
+      </p>
+
+      <ul class="da-list">
+        <li>Profile information</li>
+        <li>Email address</li>
+        <li>Profile photos</li>
+        <li>Bio</li>
+        <li>Playing preferences</li>
+        <li>Matches</li>
+        <li>Account settings</li>
+      </ul>
+    </section>
+
+    <!-- Data retained -->
+    <section class="da-card">
+      <div class="da-sec-title">
+        <span class="da-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h2>Data That May Be Retained</h2>
+      </div>
+
+      <p class="da-lead">
+        Some information may be retained for a limited period where required by applicable
+        laws or for legitimate business purposes, including:
+      </p>
+
+      <ul class="da-list">
+        <li>Payment and transaction records</li>
+        <li>Fraud prevention and security logs</li>
+        <li>Information required to comply with legal obligations</li>
+      </ul>
+
+      <p class="da-note">Retained information is stored only for as long as necessary.</p>
+    </section>
+
+    <!-- Help -->
+    <section class="da-card">
+      <div class="da-sec-title">
+        <span class="da-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h2>Need Help?</h2>
+      </div>
+
+      <p class="da-lead">If you are unable to access your account, please contact:</p>
+
+      <a class="da-btn" href="mailto:support@pickie.app">support@pickie.app</a>
+    </section>
+
+  </div>
+
+  <!-- ============ FOOTER — copied 1:1 from privacy.html ============ -->
+  <footer style="border-top: 1px solid rgba(10,26,68,0.08); background: #FFFFFF;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 44px 28px 30px; display: flex; flex-direction: column; gap: 26px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 26px 48px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="index.html" aria-label="Pickie home" style="display: inline-flex; align-items: center;">
+            <img src="pickie-logo-web.png" alt="Pickie" style="height: 30px; width: auto; display: block;">
+          </a>
+          <div style="font-size: 13.5px; color: rgba(10,26,68,0.55);">Find Your Match. <strong style="color: #1E40FF;">Be Pickie.</strong></div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px 26px; font-size: 13px; font-weight: 500; padding-top: 8px;">
+          <a href="index.html#how" style="color: rgba(10,26,68,0.62); text-decoration: none;">How it works</a>
+          <a href="index.html#matchnow" style="color: rgba(10,26,68,0.62); text-decoration: none;">Match Now</a>
+          <a href="index.html#features" style="color: rgba(10,26,68,0.62); text-decoration: none;">Features</a>
+          <a href="index.html#founder" style="color: rgba(10,26,68,0.62); text-decoration: none;">About</a>
+        </div>
+      </div>
+      <div style="border-top: 1px solid #F0F2F8; padding: 18px 76px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; line-height: 1.7; color: rgba(10,26,68,0.4);">
+        <span>&copy; <span id="pkYear"></span> Pickie &middot; pickie.app &middot; All rights reserved.</span>
+        <span style="display: flex; gap: 14px;">
+          <a href="terms.html" style="color: inherit;">Terms</a>
+          <a href="privacy.html" style="color: inherit;">Privacy</a>
+          <a href="mailto:support@pickie.app" style="color: inherit;">Contact</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('pkYear').textContent = new Date().getFullYear();
+
+  var btn = document.getElementById('pkMenuBtn');
+  var panel = document.getElementById('pkMenuPanel');
+  btn.addEventListener('click', function () {
+    var open = panel.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  panel.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      panel.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+</body>
+</html>
