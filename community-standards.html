@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community Standards | Pickie</title>
+<meta name="description" content="The behavior we expect from everyone using Pickie.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pickie">
+<meta property="og:title" content="Community Standards | Pickie">
+<meta property="og:description" content="The behavior we expect from everyone using Pickie.">
+<meta property="og:url" content="https://pickie.app/community-standards.html">
+<meta property="og:image" content="https://pickie.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Community Standards | Pickie">
+<meta name="twitter:description" content="The behavior we expect from everyone using Pickie.">
+<meta name="twitter:image" content="https://pickie.app/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body, h1, h2, p, ul, figure { margin: 0; padding: 0; }
+    ul { list-style: none; }
+
+    body {
+      font-family: Sora, sans-serif;
+      color: #0A1A44;
+      background: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    /* --- Nav --------------------------------------------------------- */
+    .pk-navlink { font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78; }
+    .pk-navlink:hover { opacity: 1; }
+    .pk-menu-btn { display: none; }
+
+    /* --- Table of contents ------------------------------------------- */
+    .pk-toc-link {
+      display: flex; align-items: baseline; gap: 9px;
+      padding: 9px 12px; border-radius: 10px; text-decoration: none;
+      color: rgba(10, 26, 68, 0.68); font-size: 13px; font-weight: 600; line-height: 1.35;
+      transition: background 0.15s, color 0.15s; background: transparent;
+    }
+    .pk-toc-link:hover { background: #ECEFF8; }
+    .pk-toc-link.is-active { background: #1E40FF; color: #FFFFFF; }
+    .pk-toc-num { font-size: 11px; font-weight: 700; opacity: 0.55; min-width: 16px; }
+
+    /* --- Document body ----------------------------------------------- */
+    .pk-sec { scroll-margin-top: 104px; }
+    .pk-sec h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin: 36px 0 12px; }
+    .pk-sec:first-child h2 { margin-top: 0; }
+    .pk-lead { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px; }
+    .pk-p { font-size: 16px; line-height: 1.7; color: rgba(10, 26, 68, 0.72); margin-bottom: 12px; }
+    .pk-list { margin: 4px 0 14px 22px; font-size: 16px; line-height: 1.7; color: rgba(10, 26, 68, 0.72); list-style: disc; }
+    .pk-list li { margin-bottom: 5px; }
+    .pk-callout {
+      margin: 16px 0 18px; padding: 16px 20px;
+      background: #F7F8FC; border: 1px solid #E4E7F0; border-left: 3px solid #1E40FF;
+      border-radius: 14px; font-size: 16px; line-height: 1.65; font-weight: 600; color: #0A1A44;
+    }
+    a.pk-inline { color: #1E40FF; font-weight: 600; text-decoration: none; }
+    a.pk-inline:hover { text-decoration: underline; }
+
+    /* --- Footer ------------------------------------------------------- */
+    .pk-footlink { color: rgba(10, 26, 68, 0.62); text-decoration: none; }
+    .pk-footlink:hover { color: #0A1A44; }
+
+    @media (min-width: 941px) {
+      .pk-menu-panel { display: none !important; }
+    }
+    @media (max-width: 940px) {
+      .pk-navlink { display: none !important; }
+      .pk-menu-btn { display: flex; }
+      .pk-legal-grid { grid-template-columns: 1fr !important; }
+      .pk-toc { position: static !important; max-height: 280px !important; }
+    }
+  </style>
+
+    <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+    import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCFZ1-ajIiRBIkZA6p7hzzBpRib8Ydv7Zo",
+      authDomain: "pickie-landing-page.firebaseapp.com",
+      projectId: "pickie-landing-page",
+      storageBucket: "pickie-landing-page.firebasestorage.app",
+      messagingSenderId: "371770661646",
+      appId: "1:371770661646:web:ccf3cb1fb3390d6b4a555f",
+      measurementId: "G-SY6PEJNG9M"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // ---- Event tracking ---------------------------------------------------
+    // Traffic source, attached to every event as `platform`:
+    //   mobile_app  -> ?platform=app (or src=app), the app's WebView UA token
+    //                  ("PickieApp"), or a WebView JS bridge. Persisted so it
+    //                  survives navigation to terms.html / privacy.html.
+    //   mobile_web  -> a mobile browser
+    //   desktop_web -> everything else
+    var PICKIE_PLATFORM = (function () {
+      try {
+        var qs = new URLSearchParams(location.search);
+        var forced = (qs.get('platform') || qs.get('src') || '').toLowerCase();
+        if (['app', 'mobile_app', 'ios', 'android', 'flutter'].indexOf(forced) !== -1) {
+          try { localStorage.setItem('pickie_platform', 'mobile_app'); } catch (e) {}
+          return 'mobile_app';
+        }
+        try { if (localStorage.getItem('pickie_platform') === 'mobile_app') return 'mobile_app'; } catch (e) {}
+        var ua = navigator.userAgent || '';
+        if (/PickieApp/i.test(ua) || window.PickieApp || window.flutter_inappwebview || window.ReactNativeWebView) return 'mobile_app';
+        var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(ua) || (navigator.userAgentData && navigator.userAgentData.mobile);
+        return isMobile ? 'mobile_web' : 'desktop_web';
+      } catch (e) { return 'web'; }
+    })();
+
+    // Helper so events can be fired from anywhere on the page. Every event
+    // automatically carries the `platform` source parameter.
+    window.trackEvent = function (name, params) {
+      var merged = Object.assign({ platform: PICKIE_PLATFORM }, params || {});
+      try { logEvent(analytics, name, merged); } catch (e) { /* no-op */ }
+    };
+
+    // The page is rendered by a client-side bundler that swaps <html> after
+    // load. `document` survives that swap, so a single delegated listener in
+    // the capture phase reliably catches clicks on the dynamically-rendered
+    // links and buttons.
+    if (!window.__pickieTracking) {
+      window.__pickieTracking = true;
+      document.addEventListener('click', function (e) {
+        const el = e.target.closest && e.target.closest('a, button, [role="button"]');
+        if (!el) return;
+
+        const text = (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+        const href = el.getAttribute('href') || '';
+        const inNav = !!el.closest('nav');
+        const inFooter = !!el.closest('footer');
+        const location = inNav ? 'header_nav' : (inFooter ? 'footer' : 'page');
+
+        // Identify an App Store / Google Play button from its label or (future) URL.
+        let store = '';
+        if (/apps\.apple\.com|itunes\.apple\.com/i.test(href) || /app store|apple/i.test(text)) store = 'app_store';
+        else if (/play\.google\.com/i.test(href) || /google play/i.test(text)) store = 'google_play';
+
+        // 1. FAQ accordion buttons (buttons with a label, excluding the nav toggle).
+        //    faq_id is a stable slug so you can rank the top FAQ in GA4 even if
+        //    the wording changes; question keeps the human-readable text.
+        if (el.tagName === 'BUTTON' && !inNav && text) {
+          var faqId = text.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 40);
+          window.trackEvent('faq_toggle', { question: text, faq_id: faqId });
+          return;
+        }
+
+        // 2. Contact / email links
+        if (/^mailto:/i.test(href)) {
+          window.trackEvent('contact_click', { method: 'email', address: href.replace(/^mailto:/i, '') });
+          return;
+        }
+
+        // 3. App-download buttons — a dedicated event per store. Fires whether the
+        //    button is still a placeholder (#) or points at a real store URL.
+        if (store) {
+          const params = { cta_label: text, location: location };
+          if (/^https?:\/\//i.test(href)) params.link_url = href.slice(0, 120);
+          window.trackEvent(store === 'app_store' ? 'download_app_store' : 'download_google_play', params);
+          return;
+        }
+
+        // 4. Other real external links
+        if (/^https?:\/\//i.test(href)) {
+          let domain = '';
+          try { domain = new URL(href).hostname; } catch (_) {}
+          window.trackEvent('outbound_link_click', { link_url: href.slice(0, 120), link_domain: domain, link_text: text });
+          return;
+        }
+
+        // 5. "Get the app" — generic CTA that scrolls to the download section
+        if (href === '#get') {
+          window.trackEvent('cta_click', { cta_label: text || 'get_the_app', location: location });
+          return;
+        }
+
+        // 6. In-page section navigation (the menu links)
+        if (href.charAt(0) === '#' && text) {
+          window.trackEvent('menu_click', { menu_item: text, target_section: href, location: location });
+          return;
+        }
+
+        // 7. Terms & Privacy get their own events; other .html links stay generic.
+        if (/privacy\.html/i.test(href)) {
+          window.trackEvent('privacy_click', { link_text: text, location: location });
+          return;
+        }
+        if (/terms\.html/i.test(href)) {
+          window.trackEvent('terms_click', { link_text: text, location: location });
+          return;
+        }
+        if (/\.html($|[?#])/i.test(href)) {
+          window.trackEvent('page_link_click', { link_text: text, href: href });
+          return;
+        }
+      }, true);
+    }
+  </script>
+</head>
+<body>
+  <div style="overflow-x: clip;">
+
+    <nav style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(10,26,68,0.07);">
+      <div style="max-width: 1180px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between;">
+        <a href="index.html" aria-label="Pickie home" style="display: flex; align-items: center; text-decoration: none;"><img src="assets/pickie-logo-web.png" alt="Pickie" style="height: 34px; width: auto; display: block;"></a>
+        <div style="display: flex; align-items: center; gap: 30px;">
+          <a class="pk-navlink" href="index.html#how">How it works</a>
+          <a class="pk-navlink" href="index.html#matchnow">Match Now</a>
+          <a class="pk-navlink" href="index.html#features">Features</a>
+          <a class="pk-navlink" href="index.html#founder">About</a>
+          <a href="index.html#get" style="font-size: 14px; font-weight: 700; color: #FFFFFF; background: #1E40FF; padding: 11px 20px; border-radius: 999px; text-decoration: none;">Get the app</a>
+          <button class="pk-menu-btn" id="pkMenuBtn" aria-label="Menu" aria-expanded="false" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: -8px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0A1A44" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+        </div>
+      </div>
+      <div class="pk-menu-panel" id="pkMenuPanel" hidden style="position: absolute; top: 100%; left: 0; right: 0; background: #FFFFFF; border-bottom: 1px solid #E4E7F0; box-shadow: 0 24px 34px -22px rgba(10,26,68,0.28); padding: 8px 24px 18px; display: flex; flex-direction: column;">
+        <a href="index.html#how" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">How it works</a>
+        <a href="index.html#matchnow" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Match Now</a>
+        <a href="index.html#features" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Features</a>
+        <a href="index.html#founder" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">About</a>
+        <a href="index.html#get" style="margin-top: 12px; text-align: center; font-size: 15px; font-weight: 700; color: #FFFFFF; background: #1E40FF; padding: 13px 20px; border-radius: 999px; text-decoration: none;">Get the app</a>
+      </div>
+    </nav>
+
+    <header style="max-width: 1180px; margin: 0 auto; padding: 56px 28px 36px; text-align: center;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #1E40FF; margin-bottom: 14px;">COMMUNITY</div>
+      <h1 style="font-size: clamp(36px, 5vw, 56px); line-height: 1; letter-spacing: -0.035em; font-weight: 800;">Community Standards</h1>
+      <div style="font-size: 15px; color: rgba(10, 26, 68, 0.55); margin-top: 16px;">Last updated: August 1, 2026 · Pickie · pickie.app · support@pickie.app</div>
+    </header>
+
+    <div class="pk-legal-grid" style="max-width: 1180px; margin: 0 auto; padding: 12px 28px 90px; display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 28px; align-items: start;">
+
+      <aside class="pk-toc" style="position: sticky; top: 92px; background: #F7F8FC; border: 1px solid #E4E7F0; border-radius: 18px; padding: 12px; max-height: calc(100vh - 116px); overflow: auto;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: rgba(10, 26, 68, 0.45); padding: 8px 12px 10px;">ON THIS PAGE</div>
+        <a class="pk-toc-link" href="#sec-1"><span class="pk-toc-num">1</span><span>Treat Everyone with Respect</span></a>
+        <a class="pk-toc-link" href="#sec-2"><span class="pk-toc-num">2</span><span>Be Honest</span></a>
+        <a class="pk-toc-link" href="#sec-3"><span class="pk-toc-num">3</span><span>Use Pickie for Genuine Sporting Connections</span></a>
+        <a class="pk-toc-link" href="#sec-4"><span class="pk-toc-num">4</span><span>Respect Personal Boundaries</span></a>
+        <a class="pk-toc-link" href="#sec-5"><span class="pk-toc-num">5</span><span>Protect Privacy and Safety</span></a>
+        <a class="pk-toc-link" href="#sec-6"><span class="pk-toc-num">6</span><span>Practice Good Sportsmanship</span></a>
+        <a class="pk-toc-link" href="#sec-7"><span class="pk-toc-num">7</span><span>Content That Is Not Allowed</span></a>
+        <a class="pk-toc-link" href="#sec-8"><span class="pk-toc-num">8</span><span>Reporting and Enforcement</span></a>
+        <a class="pk-toc-link" href="#sec-9"><span class="pk-toc-num">9</span><span>Building the Future of Sports Communities</span></a>
+        <a class="pk-toc-link" href="#sec-10"><span class="pk-toc-num">10</span><span>Contact Us</span></a>
+      </aside>
+
+      <main style="min-width: 0;">
+        <div style="background: #FFFFFF; border: 1px solid #E4E7F0; border-radius: 22px; padding: clamp(28px, 4vw, 48px);">
+
+          <h2 class="pk-lead">Welcome to Pickie</h2>
+          <p class="pk-p">Pickie is built to help people find compatible sports partners, build meaningful connections, and enjoy playing together.</p>
+          <p class="pk-p">Today, Pickie focuses on pickleball. As we grow, we may expand to support more sports and communities. No matter the sport, our mission remains the same:</p>
+          <div class="pk-callout">Create a safe, respectful, and welcoming environment where people can connect through sport.</div>
+          <p class="pk-p">These Community Standards explain the behavior we expect from everyone using Pickie. By using Pickie, you agree to follow these standards.</p>
+
+          <section class="pk-sec" id="sec-1">
+            <h2>1. Treat Everyone with Respect</h2>
+            <p class="pk-p">Respect is the foundation of every great community.</p>
+            <p class="pk-p">Every player should feel welcome, regardless of:</p>
+            <ul class="pk-list">
+              <li>Skill level</li>
+              <li>Experience</li>
+              <li>Age</li>
+              <li>Gender</li>
+              <li>Nationality</li>
+              <li>Language</li>
+              <li>Background</li>
+              <li>Playing style</li>
+            </ul>
+            <p class="pk-p">We encourage positive communication, good sportsmanship, and inclusive behavior both online and on the court.</p>
+            <p class="pk-p">We do not tolerate:</p>
+            <ul class="pk-list">
+              <li>Harassment or bullying</li>
+              <li>Hate speech</li>
+              <li>Threats or intimidation</li>
+              <li>Discrimination</li>
+              <li>Personal attacks</li>
+              <li>Abusive or offensive behavior</li>
+            </ul>
+          </section>
+
+          <section class="pk-sec" id="sec-2">
+            <h2>2. Be Honest</h2>
+            <p class="pk-p">Great matches start with accurate information.</p>
+            <p class="pk-p">Please:</p>
+            <ul class="pk-list">
+              <li>Use your real identity.</li>
+              <li>Upload photos that represent you.</li>
+              <li>Provide accurate information about yourself.</li>
+              <li>Keep your profile information updated.</li>
+              <li>Represent your skill level honestly.</li>
+            </ul>
+            <p class="pk-p">Do not:</p>
+            <ul class="pk-list">
+              <li>Create fake accounts.</li>
+              <li>Impersonate another person.</li>
+              <li>Misrepresent your playing ability.</li>
+              <li>Use bots, automated accounts, or fake activity.</li>
+            </ul>
+          </section>
+
+          <section class="pk-sec" id="sec-3">
+            <h2>3. Use Pickie for Genuine Sporting Connections</h2>
+            <p class="pk-p">Pickie exists to help people connect through sport.</p>
+            <p class="pk-p">Whether you are looking for a casual game, training partner, tournament partner, or new friends, Pickie is designed for genuine sporting connections.</p>
+            <p class="pk-p">Do not use Pickie to:</p>
+            <ul class="pk-list">
+              <li>Send spam or unwanted promotions.</li>
+              <li>Scam or defraud other users.</li>
+              <li>Request money from other users.</li>
+              <li>Advertise unrelated products or services without permission.</li>
+              <li>Conduct illegal activities.</li>
+              <li>Misuse the platform for purposes unrelated to sports and community building.</li>
+            </ul>
+          </section>
+
+          <section class="pk-sec" id="sec-4">
+            <h2>4. Respect Personal Boundaries</h2>
+            <p class="pk-p">Everyone has different comfort levels and expectations.</p>
+            <p class="pk-p">Respect other people’s choices and boundaries.</p>
+            <p class="pk-p">Do not:</p>
+            <ul class="pk-list">
+              <li>Send repeated unwanted messages.</li>
+              <li>Pressure someone to meet.</li>
+              <li>Make unwanted romantic or sexual advances.</li>
+              <li>Send sexually explicit content.</li>
+              <li>Continue contacting someone after they have declined or blocked you.</li>
+            </ul>
+            <p class="pk-p">Good connections are built on mutual respect.</p>
+          </section>
+
+          <section class="pk-sec" id="sec-5">
+            <h2>5. Protect Privacy and Safety</h2>
+            <p class="pk-p">Your safety and the safety of other players matter.</p>
+            <p class="pk-p">Please:</p>
+            <ul class="pk-list">
+              <li>Meet other players in public locations whenever possible.</li>
+              <li>Respect other people’s privacy.</li>
+              <li>Be thoughtful before sharing personal information.</li>
+              <li>Use good judgment when meeting someone for the first time.</li>
+            </ul>
+            <p class="pk-p">Do not:</p>
+            <ul class="pk-list">
+              <li>Share another user’s personal information without permission.</li>
+              <li>Attempt to track, stalk, or intimidate another user.</li>
+              <li>Use Pickie to facilitate harmful or illegal activities.</li>
+            </ul>
+          </section>
+
+          <section class="pk-sec" id="sec-6">
+            <h2>6. Practice Good Sportsmanship</h2>
+            <p class="pk-p">Every sport is competitive, but respect always comes first.</p>
+            <p class="pk-p">Whether you are playing casually or competing at a high level, we encourage everyone to:</p>
+            <ul class="pk-list">
+              <li>Play fairly.</li>
+              <li>Respect teammates, partners, opponents, and officials.</li>
+              <li>Encourage new players.</li>
+              <li>Celebrate great games.</li>
+              <li>Accept wins and losses respectfully.</li>
+              <li>Help create a positive sporting environment.</li>
+            </ul>
+            <p class="pk-p">Great chemistry is not only about winning — it is about enjoying the game together.</p>
+          </section>
+
+          <section class="pk-sec" id="sec-7">
+            <h2>7. Content That Is Not Allowed</h2>
+            <p class="pk-p">To keep Pickie safe and welcoming, users may not share or promote:</p>
+            <ul class="pk-list">
+              <li>Harassment or abusive content</li>
+              <li>Hate speech or discriminatory content</li>
+              <li>Threats of violence</li>
+              <li>Sexually explicit content</li>
+              <li>Illegal activities</li>
+              <li>Fraud or scams</li>
+              <li>Fake identities</li>
+              <li>Spam</li>
+              <li>Unsolicited advertising</li>
+              <li>Content promoting gambling, drugs, or criminal activity</li>
+              <li>Content intended to deceive, exploit, or harm others</li>
+            </ul>
+          </section>
+
+          <section class="pk-sec" id="sec-8">
+            <h2>8. Reporting and Enforcement</h2>
+            <p class="pk-p">If you see behavior that violates these Community Standards, you can:</p>
+            <ul class="pk-list">
+              <li>Report a user</li>
+              <li>Block a user</li>
+              <li>Contact Pickie support</li>
+            </ul>
+            <p class="pk-p">Our team reviews reports and may take actions including:</p>
+            <ul class="pk-list">
+              <li>Warning the user</li>
+              <li>Removing content</li>
+              <li>Restricting account features</li>
+              <li>Temporarily suspending an account</li>
+              <li>Permanently removing an account</li>
+            </ul>
+            <p class="pk-p">We may take action without prior notice when necessary to protect the Pickie community.</p>
+            <p class="pk-p">Our goal is to maintain a safe, fair, and enjoyable experience for everyone.</p>
+          </section>
+
+          <section class="pk-sec" id="sec-9">
+            <h2>9. Building the Future of Sports Communities</h2>
+            <p class="pk-p">Every swipe, match, conversation, and game shapes the community we are building together.</p>
+            <p class="pk-p">Pickie is created for people who love sports — from beginners discovering a new activity to experienced players looking for better partners.</p>
+            <p class="pk-p">Together, we can build a global sports community where people connect, compete, improve, and enjoy the games they love.</p>
+            <p class="pk-p">Thank you for being part of Pickie.</p>
+          </section>
+
+          <section class="pk-sec" id="sec-10">
+            <h2>10. Contact Us</h2>
+            <p class="pk-p">If you have questions about these Community Standards or would like to report a concern, please contact us:</p>
+            <p class="pk-p">Email: <a class="pk-inline" href="mailto:support@pickie.app">support@pickie.app</a></p>
+          </section>
+
+          <div style="margin-top: 40px; padding: 22px 24px; background: #F7F8FC; border-radius: 16px;">
+            <div style="font-weight: 800; font-size: 16px;">Questions about these Community Standards?</div>
+            <p style="font-size: 15px; line-height: 1.6; color: rgba(10,26,68,0.7); margin-top: 6px;">For questions, reports, safety concerns, or complaints, contact us at <a href="mailto:support@pickie.app" style="color: #1E40FF; font-weight: 600; text-decoration: none;">support@pickie.app</a>.</p>
+          </div>
+
+        </div>
+      </main>
+    </div>
+
+    <footer style="border-top: 1px solid rgba(10,26,68,0.08); background: #FFFFFF;">
+      <div style="max-width: 1180px; margin: 0 auto; padding: 44px 28px 30px; display: flex; flex-direction: column; gap: 26px;">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 26px 48px;">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="index.html" aria-label="Pickie home" style="display: inline-flex; align-items: center;"><img src="assets/pickie-logo-web.png" alt="Pickie" style="height: 30px; width: auto; display: block;"></a>
+            <div style="font-size: 13.5px; color: rgba(10,26,68,0.55);">Find Your Match. <strong style="color: #1E40FF;">Be Pickie.</strong></div>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px 26px; font-size: 13px; font-weight: 500; padding-top: 8px;">
+            <a class="pk-footlink" href="index.html#how">How it works</a>
+            <a class="pk-footlink" href="index.html#matchnow">Match Now</a>
+            <a class="pk-footlink" href="index.html#features">Features</a>
+            <a class="pk-footlink" href="index.html#founder">About</a>
+          </div>
+        </div>
+        <div style="border-top: 1px solid #F0F2F8; padding: 18px 76px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; line-height: 1.7; color: rgba(10,26,68,0.4);">
+          <span>© 2026 Pickie · pickie.app · All rights reserved.</span>
+          <span style="display: flex; gap: 14px;"><a href="terms.html" style="color: inherit;">Terms</a><a href="privacy.html" style="color: inherit;">Privacy</a><a href="community-standards.html" style="color: inherit;">Community Standards</a><a href="mailto:support@pickie.app" style="color: inherit;">Contact</a></span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    (function () {
+      var btn = document.getElementById('pkMenuBtn');
+      var panel = document.getElementById('pkMenuPanel');
+      if (!btn || !panel) return;
+      btn.addEventListener('click', function () {
+        var open = !panel.hidden;
+        panel.hidden = open;
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+      panel.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') { panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+      });
+    })();
+
+    // Table-of-contents scroll spy — highlights the section currently in view.
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.pk-toc-link'));
+      var sections = links
+        .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+        .filter(Boolean);
+      if (!sections.length) return;
+
+      function setActive(i) {
+        links.forEach(function (a, n) { a.classList.toggle('is-active', n === i); });
+      }
+
+      function onScroll() {
+        var marker = 140, current = 0;
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].getBoundingClientRect().top <= marker) current = i;
+        }
+        // At the very bottom, always light up the last entry.
+        if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 4) {
+          current = sections.length - 1;
+        }
+        setActive(current);
+      }
+
+      // Called directly rather than through a requestAnimationFrame gate: with
+      // ten sections the measurement is cheap, and a rAF gate deadlocks the
+      // highlight whenever a frame is throttled (background tab) and the
+      // pending callback never runs.
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
