@@ -40,6 +40,10 @@
     .pk-navlink { font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78; }
     .pk-navlink:hover { opacity: 1; }
     .pk-menu-btn { display: none; }
+    /* Collapsed by default; the toggle adds .is-open. The panel must not carry
+       an inline `display`, or it would beat these rules and stay open. */
+    .pk-menu-panel { display: none; }
+    .pk-menu-panel.is-open { display: flex; }
 
     /* --- Table of contents ------------------------------------------- */
     .pk-toc-link {
@@ -228,7 +232,7 @@
           <button class="pk-menu-btn" id="pkMenuBtn" aria-label="Menu" aria-expanded="false" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: -8px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0A1A44" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
         </div>
       </div>
-      <div class="pk-menu-panel" id="pkMenuPanel" hidden style="position: absolute; top: 100%; left: 0; right: 0; background: #FFFFFF; border-bottom: 1px solid #E4E7F0; box-shadow: 0 24px 34px -22px rgba(10,26,68,0.28); padding: 8px 24px 18px; display: flex; flex-direction: column;">
+      <div class="pk-menu-panel" id="pkMenuPanel" style="position: absolute; top: 100%; left: 0; right: 0; background: #FFFFFF; border-bottom: 1px solid #E4E7F0; box-shadow: 0 24px 34px -22px rgba(10,26,68,0.28); padding: 8px 24px 18px; flex-direction: column;">
         <a href="index.html#how" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">How it works</a>
         <a href="index.html#matchnow" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Match Now</a>
         <a href="index.html#features" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Features</a>
@@ -468,12 +472,14 @@
       var panel = document.getElementById('pkMenuPanel');
       if (!btn || !panel) return;
       btn.addEventListener('click', function () {
-        var open = !panel.hidden;
-        panel.hidden = open;
-        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        var open = panel.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
       panel.addEventListener('click', function (e) {
-        if (e.target.tagName === 'A') { panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+        if (e.target.tagName === 'A') {
+          panel.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
       });
     })();
 
