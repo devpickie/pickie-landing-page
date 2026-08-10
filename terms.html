@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Shop menu is Indonesia-only; the check has to run against the
     // rendered document, so load it after the swap.
     var pkGeo = document.createElement('script');
-    pkGeo.src = 'assets/geo-shop.js';
+    pkGeo.src = 'assets/geo-shop.js?v=2';
     document.head.appendChild(pkGeo);
 
     if (location.hash.length > 1) {

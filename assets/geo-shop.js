@@ -1,7 +1,7 @@
 /* Shop menu is Indonesia-only.
  *
- * Resolves the visitor's country from their IP via a keyless CORS service,
- * caches the answer for a day so repeat views cost no request, then reveals
+ * Resolves the visitor's country from their IP via a keyless CORS service on
+ * every load, painting immediately from the last known answer, then reveals
  * any .pk-shop / .pk-shop-m / .pk-shop-f link by putting .pk-geo-id on <body>.
  * If both sources fail, are blocked, or time out, the links stay hidden.
  *
@@ -29,7 +29,10 @@
 
   function apply(cc) {
     ensureStyle();
-    if (cc === WANT && document.body) document.body.classList.add('pk-geo-id');
+    if (!document.body) return;
+    // toggle, not add: a revalidation that comes back non-ID has to be able to
+    // hide the link again (e.g. the visitor turned a VPN on).
+    document.body.classList.toggle('pk-geo-id', cc === WANT);
   }
 
   function cached() {
@@ -83,8 +86,13 @@
     var root = document.documentElement;
     if (root.getAttribute('data-pk-geo') === '1') return;
     root.setAttribute('data-pk-geo', '1');
+    // Stale-while-revalidate. Paint from the last known answer so the link
+    // does not flicker, but ALWAYS re-check, otherwise a cached country
+    // outlives the network it came from -- connect through a VPN once and the
+    // old verdict stuck for the full day.
     var cc = cached();
-    if (cc) apply(cc); else lookup();
+    if (cc) apply(cc);
+    lookup();
   }
 
   if (document.body) run();
