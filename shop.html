@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop | Pickie</title>
+  <link rel="icon" type="image/png" href="assets/pickie-mark-64.png">
+  <link rel="apple-touch-icon" href="assets/pickie-mark-180.png">
+<meta name="description" content="Pickleball brands in the Pickieball Society network. Paddles, gear, and apparel from Luzz, Pikskin, and JOOLA.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pickie">
+<meta property="og:title" content="Shop | Pickie">
+<meta property="og:description" content="Pickleball brands in the Pickieball Society network. Paddles, gear, and apparel from Luzz, Pikskin, and JOOLA.">
+<meta property="og:url" content="https://pickie.app/shop.html">
+<meta property="og:image" content="https://pickie.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shop | Pickie">
+<meta name="twitter:description" content="Pickleball brands in the Pickieball Society network. Paddles, gear, and apparel from Luzz, Pikskin, and JOOLA.">
+<meta name="twitter:image" content="https://pickie.app/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="assets/geo-shop.js" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body, h1, h2, p, ul, figure { margin: 0; padding: 0; }
+    ul { list-style: none; }
+
+    body {
+      font-family: Sora, sans-serif;
+      color: #0A1A44;
+      background: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: #B7FF2A; color: #0A1A44; }
+
+    /* Shop is Indonesia-only; assets/geo-shop.js adds .pk-geo-id to <body>. */
+    .pk-shop, .pk-shop-m, .pk-shop-f { display: none; }
+    body.pk-geo-id .pk-shop { display: inline; }
+    body.pk-geo-id .pk-shop-m, body.pk-geo-id .pk-shop-f { display: block; }
+
+    a { color: inherit; }
+
+    /* --- Nav ---------------------------------------------------------- */
+    .pk-navlink { font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78; }
+    .pk-navlink:hover { opacity: 1; }
+    .pk-menu-btn { display: none; }
+    .pk-menu-panel { display: none; }
+    .pk-menu-panel.is-open { display: flex; }
+
+    /* --- Pro Shop banner --------------------------------------------- */
+    .pk-proshop {
+      display: flex; align-items: center; gap: 16px;
+      background: linear-gradient(100deg, #0A1A44 0%, #13235A 45%, #1E40FF 100%);
+      border-radius: 22px; padding: 18px 20px; text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 14px 30px -18px rgba(10,26,68,0.55);
+    }
+    .pk-proshop:hover { transform: translateY(-2px); box-shadow: 0 20px 36px -18px rgba(10,26,68,0.6); }
+    .pk-proshop-logo {
+      flex: none; width: 62px; height: 62px; border-radius: 14px; background: #1E40FF;
+      object-fit: cover; display: block;
+    }
+    .pk-proshop-open {
+      flex: none; background: #B7FF2A; color: #0A1A44; font-weight: 800; font-size: 14px;
+      padding: 11px 18px; border-radius: 999px; white-space: nowrap;
+    }
+
+    /* --- Brand grid --------------------------------------------------- */
+    .pk-brands {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px; margin-top: 16px;
+    }
+    .pk-brand {
+      position: relative; aspect-ratio: 1 / 1; border-radius: 20px;
+      border: 1px solid #E4E7F0; overflow: hidden; text-decoration: none;
+      display: flex; align-items: center; justify-content: center; padding: 22px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .pk-brand:hover {
+      transform: translateY(-3px); border-color: #C9D0E4;
+      box-shadow: 0 16px 30px -18px rgba(10,26,68,0.4);
+    }
+    .pk-brand img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+    .pk-brand-dark { background: #000000; border-color: #000000; }
+    .pk-brand-light { background: #FFFFFF; }
+    /* Shown only if the logo file is missing, so a tile is never blank. */
+    .pk-brand-fallback { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+    .pk-brand-dark .pk-brand-fallback { color: #FFFFFF; }
+
+    .pk-brand-arrow {
+      position: absolute; top: 12px; right: 12px; width: 30px; height: 30px;
+      border-radius: 9px; background: #B7FF2A; display: flex; align-items: center; justify-content: center;
+    }
+
+    .pk-brand-empty {
+      background: #F7F8FC; border-style: dashed; border-color: #D6DCEB;
+      flex-direction: column; gap: 10px; cursor: default;
+    }
+    .pk-brand-empty:hover { transform: none; box-shadow: none; border-color: #D6DCEB; }
+    .pk-brand-empty-label {
+      background: #FFFFFF; border-radius: 999px; padding: 8px 16px;
+      font-size: 13px; font-weight: 600; color: rgba(10,26,68,0.6);
+    }
+
+    .pk-partner {
+      display: block; margin-top: 26px; background: #1E40FF; color: #FFFFFF;
+      border-radius: 999px; padding: 16px; text-align: center;
+      font-weight: 800; font-size: 16px; text-decoration: none;
+      transition: background 0.18s ease;
+    }
+    .pk-partner:hover { background: #1736D8; }
+
+    .pk-note {
+      display: flex; align-items: flex-start; gap: 8px; margin-top: 18px;
+      font-size: 13px; line-height: 1.6; color: rgba(10,26,68,0.5);
+    }
+
+    /* --- Footer ------------------------------------------------------- */
+    .pk-footlink { color: rgba(10, 26, 68, 0.62); text-decoration: none; }
+    .pk-footlink:hover { color: #0A1A44; }
+
+    @media (min-width: 941px) {
+      .pk-menu-panel { display: none !important; }
+    }
+    @media (max-width: 940px) {
+      .pk-navlink { display: none !important; }
+      .pk-menu-btn { display: flex; }
+    }
+    @media (max-width: 420px) {
+      .pk-proshop { gap: 12px; padding: 16px; }
+      .pk-proshop-logo { width: 52px; height: 52px; }
+      .pk-proshop-open { padding: 9px 14px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <div style="overflow-x: clip;">
+
+    <nav style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(10,26,68,0.07);">
+      <div style="max-width: 1180px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between;">
+        <a href="index.html" aria-label="Pickie home" style="display: flex; align-items: center; text-decoration: none;"><img src="assets/pickie-logo-web.png" alt="Pickie" style="height: 34px; width: auto; display: block;"></a>
+        <div style="display: flex; align-items: center; gap: 30px;">
+          <a class="pk-navlink" href="index.html#how">How it works</a>
+          <a class="pk-navlink" href="index.html#matchnow">Match Now</a>
+          <a class="pk-navlink" href="index.html#features">Features</a>
+          <a class="pk-navlink" href="index.html#founder">About</a>
+          <a class="pk-navlink pk-shop" href="shop.html" target="_blank" rel="noopener noreferrer" style="font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78;">Shop</a>
+          <a href="index.html#get" style="font-size: 14px; font-weight: 700; color: #FFFFFF; background: #1E40FF; padding: 11px 20px; border-radius: 999px; text-decoration: none;">Get the app</a>
+          <button class="pk-menu-btn" id="pkMenuBtn" aria-label="Menu" aria-expanded="false" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: -8px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0A1A44" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+        </div>
+      </div>
+      <div class="pk-menu-panel" id="pkMenuPanel" style="position: absolute; top: 100%; left: 0; right: 0; background: #FFFFFF; border-bottom: 1px solid #E4E7F0; box-shadow: 0 24px 34px -22px rgba(10,26,68,0.28); padding: 8px 24px 18px; flex-direction: column;">
+        <a href="index.html#how" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">How it works</a>
+        <a href="index.html#matchnow" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Match Now</a>
+        <a href="index.html#features" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Features</a>
+        <a href="index.html#founder" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none;">About</a>
+      <a class="pk-shop-m" href="shop.html" target="_blank" rel="noopener noreferrer" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-top: 1px solid #F0F2F8;">Shop</a>
+        <a href="index.html#get" style="margin-top: 12px; text-align: center; font-size: 15px; font-weight: 700; color: #FFFFFF; background: #1E40FF; padding: 13px 20px; border-radius: 999px; text-decoration: none;">Get the app</a>
+      </div>
+    </nav>
+
+    <header style="max-width: 760px; margin: 0 auto; padding: 56px 28px 30px; text-align: center;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #1E40FF; margin-bottom: 14px;">SHOP</div>
+      <h1 style="font-size: clamp(36px, 5vw, 56px); line-height: 1; letter-spacing: -0.035em; font-weight: 800;">Gear up.</h1>
+      <p style="font-size: 15px; line-height: 1.6; color: rgba(10, 26, 68, 0.55); margin-top: 16px;">Pickleball brands in the Pickieball Society network. Paddles, gear, and apparel.</p>
+    </header>
+
+    <main style="max-width: 760px; margin: 0 auto; padding: 0 28px 80px;">
+
+      <a class="pk-proshop" href="https://s.shopee.co.id/1BLRVDXVQG" target="_blank" rel="noopener noreferrer">
+        <img class="pk-proshop-logo" src="assets/shop/pickieball-society.webp" alt="Pickieball Society">
+        <span style="flex: 1; min-width: 0;">
+          <span style="display: block; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF;">Pro Shop</span>
+          <span style="display: block; font-size: 14px; color: rgba(255,255,255,0.72); margin-top: 2px;">Paddles · gear · apparel</span>
+        </span>
+        <span class="pk-proshop-open">Open ↗</span>
+      </a>
+
+      <div class="pk-brands">
+
+        <a class="pk-brand pk-brand-light" href="https://s.shopee.co.id/5VU3gByYsU" target="_blank" rel="noopener noreferrer" aria-label="Luzz Pickleball on Shopee">
+          <span class="pk-brand-arrow"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#0A1A44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"></path></svg></span>
+          <img src="assets/shop/luzz.png" alt="Luzz Pickleball" data-fallback="Luzz">
+        </a>
+
+        <a class="pk-brand pk-brand-dark" href="https://s.shopee.co.id/7AcHfDreL5" target="_blank" rel="noopener noreferrer" aria-label="Pikskin on Shopee">
+          <span class="pk-brand-arrow"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#0A1A44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"></path></svg></span>
+          <img src="assets/shop/pikskin.png" alt="Pikskin" data-fallback="PIKSKIN">
+        </a>
+
+        <a class="pk-brand pk-brand-light" href="https://wa.me/6288210971975?text=Hi%21%20I%20found%20JOOLA%20through%20Pickie.app.%20I%27m%20interested%20in%20your%20products%20and%20would%20like%20to%20know%20more%20about%20your%20paddle%20recommendations%2C%20pricing%2C%20and%20availability.%20Thank%20you%21" target="_blank" rel="noopener noreferrer" aria-label="JOOLA on WhatsApp">
+          <span class="pk-brand-arrow"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#0A1A44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"></path></svg></span>
+          <img src="assets/shop/joola.png" alt="JOOLA" data-fallback="JOOLA">
+        </a>
+
+        <div class="pk-brand pk-brand-empty" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="rgba(10,26,68,0.32)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span class="pk-brand-empty-label">Partner with us</span>
+        </div>
+
+      </div>
+
+      <div class="pk-note">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(10,26,68,0.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+        <span>Brands shown here are curated by location, so you see gear that is actually available near you.</span>
+      </div>
+
+      <a class="pk-partner" href="https://wa.me/6288210971975?text=Hi%21%20I%20am%20interested%20in%20partnering%20my%20pickleball%20brand%20with%20the%20Pickieball%20Society%20network." target="_blank" rel="noopener noreferrer">Partner with us</a>
+
+    </main>
+
+    <footer style="border-top: 1px solid rgba(10,26,68,0.08); background: #FFFFFF;">
+      <div style="max-width: 1180px; margin: 0 auto; padding: 44px 28px 30px; display: flex; flex-direction: column; gap: 26px;">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 26px 48px;">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="index.html" aria-label="Pickie home" style="display: inline-flex; align-items: center;"><img src="assets/pickie-logo-web.png" alt="Pickie" style="height: 30px; width: auto; display: block;"></a>
+            <div style="font-size: 13.5px; color: rgba(10,26,68,0.55);">Find your match. <strong style="color: #1E40FF;">Be Pickie.</strong></div>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px 26px; font-size: 13px; font-weight: 500; padding-top: 8px;">
+            <a class="pk-footlink" href="index.html#how">How it works</a>
+            <a class="pk-footlink" href="index.html#matchnow">Match Now</a>
+            <a class="pk-footlink" href="index.html#features">Features</a>
+            <a class="pk-footlink" href="index.html#founder">About</a>
+            <a class="pk-footlink pk-shop-f" href="shop.html" target="_blank" rel="noopener noreferrer">Shop</a>
+          </div>
+        </div>
+        <div style="border-top: 1px solid #F0F2F8; padding: 18px 76px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; line-height: 1.7; color: rgba(10,26,68,0.4);">
+          <span>© 2026 Pickie · pickie.app · All rights reserved.</span>
+          <span style="display: flex; gap: 14px;"><a href="terms.html" style="color: inherit;">Terms</a><a href="privacy.html" style="color: inherit;">Privacy</a><a href="community-standards.html" style="color: inherit;">Community Standards</a><a href="mailto:support@pickie.app" style="color: inherit;">Contact</a></span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // If a brand logo file is missing, drop in its name so the tile is never
+    // blank. Grab the tile BEFORE removing the image, or closest() sees a
+    // detached node and returns null.
+    (function () {
+      document.querySelectorAll('.pk-brand img').forEach(function (img) {
+        var swap = function () {
+          var tile = img.closest('.pk-brand');
+          if (!tile || tile.querySelector('.pk-brand-fallback')) return;
+          img.remove();
+          var label = document.createElement('span');
+          label.className = 'pk-brand-fallback';
+          label.textContent = img.getAttribute('data-fallback') || img.alt;
+          tile.appendChild(label);
+        };
+        img.addEventListener('error', swap);
+        if (img.complete && img.naturalWidth === 0) swap();
+      });
+    })();
+
+    // Mobile menu toggle (same pattern as the other static pages).
+    (function () {
+      var btn = document.getElementById('pkMenuBtn');
+      var panel = document.getElementById('pkMenuPanel');
+      if (!btn || !panel) return;
+      btn.addEventListener('click', function () {
+        var open = panel.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      panel.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          panel.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
