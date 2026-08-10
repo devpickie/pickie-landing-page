@@ -93,9 +93,12 @@
       flex-direction: column; gap: 10px;
     }
     .pk-brand-empty:hover { border-color: #1E40FF; }
+    /* Must stay on one line inside a tile that is only ~124px wide on a 320px
+       phone, so the size tracks the viewport and tops out at 12px. */
     .pk-brand-empty-label {
-      background: #FFFFFF; border-radius: 999px; padding: 8px 16px;
-      font-size: 13px; font-weight: 600; color: rgba(10,26,68,0.6);
+      background: #FFFFFF; border-radius: 999px; padding: 8px 11px;
+      font-size: clamp(10px, 3vw, 12px); font-weight: 600; color: rgba(10,26,68,0.6);
+      white-space: nowrap; max-width: 100%;
     }
 
     .pk-partner {
@@ -114,6 +117,11 @@
        headroom. Desktop keeps it. Overrides the inline padding. */
     @media (max-width: 640px) {
       .pk-shop-head { padding-top: 20px !important; padding-bottom: 22px !important; }
+      .pk-brand { padding: 16px; }
+    }
+    @media (max-width: 380px) {
+      .pk-brand { padding: 12px; }
+      .pk-brand-empty-label { padding: 7px 9px; }
     }
     @media (max-width: 420px) {
       .pk-proshop { gap: 12px; padding: 16px; }
