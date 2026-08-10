@@ -24,7 +24,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <script src="assets/geo-shop.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body, h1, h2, p, ul, figure { margin: 0; padding: 0; }
@@ -39,19 +38,7 @@
 
     ::selection { background: #B7FF2A; color: #0A1A44; }
 
-    /* Shop is Indonesia-only; assets/geo-shop.js adds .pk-geo-id to <body>. */
-    .pk-shop, .pk-shop-m, .pk-shop-f { display: none; }
-    body.pk-geo-id .pk-shop { display: inline; }
-    body.pk-geo-id .pk-shop-m, body.pk-geo-id .pk-shop-f { display: block; }
-
     a { color: inherit; }
-
-    /* --- Nav ---------------------------------------------------------- */
-    .pk-navlink { font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78; }
-    .pk-navlink:hover { opacity: 1; }
-    .pk-menu-btn { display: none; }
-    .pk-menu-panel { display: none; }
-    .pk-menu-panel.is-open { display: flex; }
 
     /* --- Pro Shop banner --------------------------------------------- */
     .pk-proshop {
@@ -123,18 +110,6 @@
       display: flex; align-items: flex-start; gap: 8px; margin-top: 18px;
       font-size: 13px; line-height: 1.6; color: rgba(10,26,68,0.5);
     }
-
-    /* --- Footer ------------------------------------------------------- */
-    .pk-footlink { color: rgba(10, 26, 68, 0.62); text-decoration: none; }
-    .pk-footlink:hover { color: #0A1A44; }
-
-    @media (min-width: 941px) {
-      .pk-menu-panel { display: none !important; }
-    }
-    @media (max-width: 940px) {
-      .pk-navlink { display: none !important; }
-      .pk-menu-btn { display: flex; }
-    }
     @media (max-width: 420px) {
       .pk-proshop { gap: 12px; padding: 16px; }
       .pk-proshop-logo { width: 52px; height: 52px; }
@@ -144,29 +119,6 @@
 </head>
 <body>
   <div style="overflow-x: clip;">
-
-    <nav style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(10,26,68,0.07);">
-      <div style="max-width: 1180px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between;">
-        <a href="index.html" aria-label="Pickie home" style="display: flex; align-items: center; text-decoration: none;"><img src="assets/pickie-logo-web.png" alt="Pickie" style="height: 34px; width: auto; display: block;"></a>
-        <div style="display: flex; align-items: center; gap: 30px;">
-          <a class="pk-navlink" href="index.html#how">How it works</a>
-          <a class="pk-navlink" href="index.html#matchnow">Match Now</a>
-          <a class="pk-navlink" href="index.html#features">Features</a>
-          <a class="pk-navlink" href="index.html#founder">About</a>
-          <a class="pk-navlink pk-shop" href="shop.html" target="_blank" rel="noopener noreferrer" style="font-size: 14px; font-weight: 500; color: #0A1A44; text-decoration: none; opacity: 0.78;">Shop</a>
-          <a href="index.html#get" style="font-size: 14px; font-weight: 700; color: #FFFFFF; background: #1E40FF; padding: 11px 20px; border-radius: 999px; text-decoration: none;">Get the app</a>
-          <button class="pk-menu-btn" id="pkMenuBtn" aria-label="Menu" aria-expanded="false" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: -8px;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0A1A44" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
-        </div>
-      </div>
-      <div class="pk-menu-panel" id="pkMenuPanel" style="position: absolute; top: 100%; left: 0; right: 0; background: #FFFFFF; border-bottom: 1px solid #E4E7F0; box-shadow: 0 24px 34px -22px rgba(10,26,68,0.28); padding: 8px 24px 18px; flex-direction: column;">
-        <a href="index.html#how" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">How it works</a>
-        <a href="index.html#matchnow" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Match Now</a>
-        <a href="index.html#features" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-bottom: 1px solid #F0F2F8;">Features</a>
-        <a href="index.html#founder" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none;">About</a>
-      <a class="pk-shop-m" href="shop.html" target="_blank" rel="noopener noreferrer" style="padding: 13px 6px; font-size: 15px; font-weight: 600; color: #0A1A44; text-decoration: none; border-top: 1px solid #F0F2F8;">Shop</a>
-        <a href="index.html#get" style="margin-top: 12px; text-align: center; font-size: 15px; font-weight: 700; color: #FFFFFF; background: #1E40FF; padding: 13px 20px; border-radius: 999px; text-decoration: none;">Get the app</a>
-      </div>
-    </nav>
 
     <header style="max-width: 760px; margin: 0 auto; padding: 56px 28px 30px; text-align: center;">
       <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #1E40FF; margin-bottom: 14px;">SHOP</div>
@@ -218,28 +170,6 @@
 
     </main>
 
-    <footer style="border-top: 1px solid rgba(10,26,68,0.08); background: #FFFFFF;">
-      <div style="max-width: 1180px; margin: 0 auto; padding: 44px 28px 30px; display: flex; flex-direction: column; gap: 26px;">
-        <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 26px 48px;">
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            <a href="index.html" aria-label="Pickie home" style="display: inline-flex; align-items: center;"><img src="assets/pickie-logo-web.png" alt="Pickie" style="height: 30px; width: auto; display: block;"></a>
-            <div style="font-size: 13.5px; color: rgba(10,26,68,0.55);">Find your match. <strong style="color: #1E40FF;">Be Pickie.</strong></div>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 12px 26px; font-size: 13px; font-weight: 500; padding-top: 8px;">
-            <a class="pk-footlink" href="index.html#how">How it works</a>
-            <a class="pk-footlink" href="index.html#matchnow">Match Now</a>
-            <a class="pk-footlink" href="index.html#features">Features</a>
-            <a class="pk-footlink" href="index.html#founder">About</a>
-            <a class="pk-footlink pk-shop-f" href="shop.html" target="_blank" rel="noopener noreferrer">Shop</a>
-          </div>
-        </div>
-        <div style="border-top: 1px solid #F0F2F8; padding: 18px 76px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; line-height: 1.7; color: rgba(10,26,68,0.4);">
-          <span>© 2026 Pickie · pickie.app · All rights reserved.</span>
-          <span style="display: flex; gap: 14px;"><a href="terms.html" style="color: inherit;">Terms</a><a href="privacy.html" style="color: inherit;">Privacy</a><a href="community-standards.html" style="color: inherit;">Community Standards</a><a href="mailto:support@pickie.app" style="color: inherit;">Contact</a></span>
-        </div>
-      </div>
-    </footer>
-
   </div>
 
   <script>
@@ -259,23 +189,6 @@
         };
         img.addEventListener('error', swap);
         if (img.complete && img.naturalWidth === 0) swap();
-      });
-    })();
-
-    // Mobile menu toggle (same pattern as the other static pages).
-    (function () {
-      var btn = document.getElementById('pkMenuBtn');
-      var panel = document.getElementById('pkMenuPanel');
-      if (!btn || !panel) return;
-      btn.addEventListener('click', function () {
-        var open = panel.classList.toggle('is-open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      panel.addEventListener('click', function (e) {
-        if (e.target.tagName === 'A') {
-          panel.classList.remove('is-open');
-          btn.setAttribute('aria-expanded', 'false');
-        }
       });
     })();
   </script>
