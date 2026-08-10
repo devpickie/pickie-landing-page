@@ -62,12 +62,15 @@
       box-shadow: 0 14px 30px -18px rgba(10,26,68,0.55);
     }
     .pk-proshop:hover { transform: translateY(-2px); box-shadow: 0 20px 36px -18px rgba(10,26,68,0.6); }
+    /* The mark is a transparent cream PNG, so the Society blue is applied
+       here rather than baked into the image (1119 KB webp -> 5 KB png). */
     .pk-proshop-logo {
-      flex: none; width: 62px; height: 62px; border-radius: 14px; background: #1E40FF;
-      object-fit: cover; display: block;
+      flex: none; width: 62px; height: 62px; border-radius: 14px;
+      background: #1261A3; object-fit: contain; display: block;
     }
     .pk-proshop-open {
-      flex: none; background: #B7FF2A; color: #0A1A44; font-weight: 800; font-size: 14px;
+      flex: none; display: inline-flex; align-items: center; gap: 6px;
+      background: #B7FF2A; color: #0A1A44; font-weight: 800; font-size: 14px;
       padding: 11px 18px; border-radius: 999px; white-space: nowrap;
     }
 
@@ -100,9 +103,9 @@
 
     .pk-brand-empty {
       background: #F7F8FC; border-style: dashed; border-color: #D6DCEB;
-      flex-direction: column; gap: 10px; cursor: default;
+      flex-direction: column; gap: 10px;
     }
-    .pk-brand-empty:hover { transform: none; box-shadow: none; border-color: #D6DCEB; }
+    .pk-brand-empty:hover { border-color: #1E40FF; }
     .pk-brand-empty-label {
       background: #FFFFFF; border-radius: 999px; padding: 8px 16px;
       font-size: 13px; font-weight: 600; color: rgba(10,26,68,0.6);
@@ -174,12 +177,12 @@
     <main style="max-width: 760px; margin: 0 auto; padding: 0 28px 80px;">
 
       <a class="pk-proshop" href="https://s.shopee.co.id/1BLRVDXVQG" target="_blank" rel="noopener noreferrer">
-        <img class="pk-proshop-logo" src="assets/shop/pickieball-society.webp" alt="Pickieball Society">
+        <img class="pk-proshop-logo" src="assets/shop/pickieball-society.png" alt="Pickieball Society">
         <span style="flex: 1; min-width: 0;">
           <span style="display: block; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF;">Pro Shop</span>
           <span style="display: block; font-size: 14px; color: rgba(255,255,255,0.72); margin-top: 2px;">Paddles · gear · apparel</span>
         </span>
-        <span class="pk-proshop-open">Open ↗</span>
+        <span class="pk-proshop-open">Open<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#0A1A44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M7 17L17 7M17 7H9M17 7v8"></path></svg></span>
       </a>
 
       <div class="pk-brands">
@@ -199,10 +202,10 @@
           <img src="assets/shop/joola.png" alt="JOOLA" data-fallback="JOOLA">
         </a>
 
-        <div class="pk-brand pk-brand-empty" aria-hidden="true">
+        <a class="pk-brand pk-brand-empty" href="https://wa.me/6288210971975?text=Hi%21%20I%20am%20interested%20in%20partnering%20my%20pickleball%20brand%20with%20the%20Pickieball%20Society%20network." target="_blank" rel="noopener noreferrer" aria-label="Partner with us">
           <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="rgba(10,26,68,0.32)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
           <span class="pk-brand-empty-label">Partner with us</span>
-        </div>
+        </a>
 
       </div>
 
