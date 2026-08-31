@@ -1,0 +1,7 @@
+# https://pickie.app
+# Everything here is public. The apex is the canonical host; www 308s to it.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://pickie.app/sitemap.xml
